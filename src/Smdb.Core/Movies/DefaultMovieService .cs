@@ -12,7 +12,6 @@ public class DefaultMovieService : IMovieService
 		this.movieRepository = movieRepository;
 	}
 
-	// <-- Rest of the code below goes here. 
 	public async Task<Result<PagedResult<Movie>>> ReadMovies(int page, int size)
 	{
 		if (page < 1)
