@@ -1,0 +1,648 @@
+/* ============================================
+   SIMPLE MOVIE DATABASE - MAIN STYLESHEET
+   ============================================ */
+
+/* ============================================
+   1. ROOT & VARIABLES
+   ============================================ */
+:root {
+	--color-primary: #0066cc;
+	--color-primary-dark: #0052a3;
+	--color-danger: #dc3545;
+	--color-danger-dark: #c82333;
+	--color-success: #28a745;
+	--color-success-dark: #218838;
+	--color-warning: #ffc107;
+	--color-warning-dark: #e0a800;
+	--color-info: #17a2b8;
+	--color-light: #f8f9fa;
+	--color-dark: #343a40;
+	--color-text: #333333;
+	--color-border: #e0e0e0;
+	--color-bg: #ffffff;
+
+	--space-xs: 0.25rem;
+	--space-sm: 0.5rem;
+	--space-md: 1rem;
+	--space-lg: 1.5rem;
+	--space-xl: 2rem;
+
+	--radius: 4px;
+	--shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+	--shadow-lg: 0 4px 16px rgba(0, 0, 0, 0.15);
+
+	--font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+	--font-mono: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+}
+
+/* ============================================
+   2. RESET & BASE STYLES
+   ============================================ */
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+html {
+	scroll-behavior: smooth;
+}
+
+body {
+	font-family: var(--font-family);
+	font-size: 16px;
+	line-height: 1.6;
+	color: var(--color-text);
+	background-color: var(--color-light);
+}
+
+/* ============================================
+   3. TYPOGRAPHY
+   ============================================ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin-bottom: var(--space-md);
+	font-weight: 600;
+	color: var(--color-dark);
+}
+
+h1 {
+	font-size: 2.5rem;
+}
+
+h2 {
+	font-size: 2rem;
+}
+
+h3 {
+	font-size: 1.5rem;
+	display: flex;
+	align-items: center;
+	gap: var(--space-md);
+	flex-wrap: wrap;
+}
+
+p {
+	margin-bottom: var(--space-md);
+}
+
+a {
+	color: var(--color-primary);
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
+
+a:hover {
+	color: var(--color-primary-dark);
+}
+
+/* ============================================
+   4. LAYOUT
+   ============================================ */
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: var(--space-lg);
+}
+
+.grid {
+	display: grid;
+	gap: var(--space-lg);
+	margin-bottom: var(--space-lg);
+}
+
+.grid.cards {
+	grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+	margin-top: var(--space-lg);
+}
+
+@media (max-width: 768px) {
+	.grid.cards {
+		grid-template-columns: 1fr;
+	}
+
+	h1 {
+		font-size: 2rem;
+	}
+
+	h3 {
+		flex-direction: column;
+		align-items: flex-start;
+	}
+}
+
+/* ============================================
+   5. HEADER & NAVIGATION
+   ============================================ */
+header {
+	background-color: var(--color-dark);
+	color: white;
+	padding: var(--space-lg);
+	margin-bottom: var(--space-xl);
+	box-shadow: var(--shadow);
+}
+
+header h1 {
+	color: white;
+	margin-bottom: var(--space-md);
+}
+
+nav ul {
+	list-style: none;
+	display: flex;
+	gap: var(--space-md);
+	flex-wrap: wrap;
+}
+
+nav a {
+	color: white;
+	padding: var(--space-sm) var(--space-md);
+	border-radius: var(--radius);
+	transition: background-color 0.2s ease;
+}
+
+nav a:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+	color: white;
+}
+
+/* ============================================
+   6. BUTTONS
+   ============================================ */
+.btn {
+	display: inline-block;
+	padding: var(--space-sm) var(--space-md);
+	background-color: #f0f0f0;
+	color: var(--color-text);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	cursor: pointer;
+	font-size: 1rem;
+	font-weight: 500;
+	transition: all 0.2s ease;
+	text-align: center;
+	white-space: nowrap;
+}
+
+.btn:hover {
+	background-color: #e0e0e0;
+	color: var(--color-text);
+	border-color: #d0d0d0;
+}
+
+.btn:active {
+	transform: scale(0.98);
+}
+
+.btn.primary {
+	background-color: var(--color-primary);
+	color: white;
+	border-color: var(--color-primary);
+}
+
+.btn.primary:hover {
+	background-color: var(--color-primary-dark);
+	border-color: var(--color-primary-dark);
+	color: white;
+}
+
+.btn.danger {
+	background-color: var(--color-danger);
+	color: white;
+	border-color: var(--color-danger);
+}
+
+.btn.danger:hover {
+	background-color: var(--color-danger-dark);
+	border-color: var(--color-danger-dark);
+	color: white;
+}
+
+.btn-view {
+	background-color: var(--color-info);
+	color: white;
+	border-color: var(--color-info);
+}
+
+.btn-view:hover {
+	background-color: var(--color-info-dark, #138496);
+	border-color: var(--color-info-dark, #138496);
+	color: white;
+}
+
+.btn-edit {
+	background-color: var(--color-warning);
+	color: #000;
+	border-color: var(--color-warning);
+}
+
+.btn-edit:hover {
+	background-color: var(--color-warning-dark);
+	border-color: var(--color-warning-dark);
+	color: #000;
+}
+
+.btn-delete {
+	background-color: var(--color-danger);
+	color: white;
+	border-color: var(--color-danger);
+}
+
+.btn-delete:hover {
+	background-color: var(--color-danger-dark);
+	border-color: var(--color-danger-dark);
+	color: white;
+}
+
+button[type="submit"] {
+	font-weight: 600;
+}
+
+/* ============================================
+   7. DISABLED STATE
+   ============================================ */
+.btn:disabled,
+.btn.disabled,
+input:disabled,
+textarea:disabled,
+select:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+	background-color: #e0e0e0 !important;
+	border-color: #c0c0c0 !important;
+	color: #999999 !important;
+}
+
+.btn:disabled:hover,
+.btn.disabled:hover {
+	background-color: #e0e0e0 !important;
+	transform: none;
+}
+
+/* ============================================
+   8. FORMS
+   ============================================ */
+form {
+	background-color: white;
+	padding: var(--space-lg);
+	border-radius: var(--radius);
+	box-shadow: var(--shadow);
+}
+
+.field {
+	margin-bottom: var(--space-lg);
+	display: flex;
+	flex-direction: column;
+}
+
+label {
+	margin-bottom: var(--space-sm);
+	font-weight: 500;
+	color: var(--color-dark);
+}
+
+input[type="text"],
+input[type="number"],
+input[type="email"],
+input[type="password"],
+textarea,
+select {
+	padding: var(--space-sm) var(--space-md);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	font-size: 1rem;
+	font-family: var(--font-family);
+	transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+input[type="text"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="password"]:focus,
+textarea:focus,
+select:focus {
+	outline: none;
+	border-color: var(--color-primary);
+	box-shadow: 0 0 0 3px rgba(0, 102, 204, 0.1);
+}
+
+textarea {
+	resize: vertical;
+	min-height: 100px;
+}
+
+.form-actions {
+	display: flex;
+	gap: var(--space-md);
+	margin-top: var(--space-xl);
+	flex-wrap: wrap;
+}
+
+.form-actions .btn {
+	flex: 1;
+	min-width: 120px;
+}
+
+/* ============================================
+   9. STATUS MESSAGES
+   ============================================ */
+.status {
+	padding: var(--space-md) var(--space-lg);
+	border-radius: var(--radius);
+	margin-bottom: var(--space-lg);
+	font-weight: 500;
+	display: none;
+	text-align: center;
+}
+
+/* Default status (loading) */
+.status {
+	display: block;
+	background-color: #e7f3ff;
+	color: #004085;
+	border: 1px solid #b8daff;
+}
+
+/* Success state - .ok */
+.status.ok {
+	background-color: #d4edda;
+	color: #155724;
+	border: 1px solid #c3e6cb;
+	display: block;
+}
+
+/* Error state - .err */
+.status.err {
+	background-color: #f8d7da;
+	color: #721c24;
+	border: 1px solid #f5c6cb;
+	display: block;
+}
+
+/* Warning state - .warn */
+.status.warn {
+	background-color: #fff3cd;
+	color: #856404;
+	border: 1px solid #ffeeba;
+	display: block;
+}
+
+/* Info state */
+.status.info {
+	background-color: #d1ecf1;
+	color: #0c5460;
+	border: 1px solid #bee5eb;
+	display: block;
+}
+
+/* ============================================
+   10. BADGES
+   ============================================ */
+.badge {
+	display: inline-block;
+	padding: var(--space-xs) var(--space-sm);
+	background-color: var(--color-light);
+	color: var(--color-dark);
+	border-radius: 12px;
+	font-size: 0.875rem;
+	font-weight: 600;
+	white-space: nowrap;
+}
+
+.badge.success {
+	background-color: var(--color-success);
+	color: white;
+}
+
+.badge.danger {
+	background-color: var(--color-danger);
+	color: white;
+}
+
+.badge.warning {
+	background-color: var(--color-warning);
+	color: #000;
+}
+
+.badge.info {
+	background-color: var(--color-info);
+	color: white;
+}
+
+/* ============================================
+   11. CARDS
+   ============================================ */
+.card {
+	background-color: white;
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	padding: var(--space-lg);
+	box-shadow: var(--shadow);
+	transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-lg);
+}
+
+.card h3 {
+	margin-top: 0;
+	margin-bottom: var(--space-md);
+	font-size: 1.25rem;
+}
+
+.row-actions {
+	display: flex;
+	gap: var(--space-sm);
+	flex-wrap: wrap;
+	margin-top: var(--space-md);
+}
+
+.row-actions .btn {
+	flex: 1;
+	min-width: 80px;
+	padding: var(--space-sm);
+	font-size: 0.9rem;
+}
+
+/* ============================================
+   12. CONTROLS & PAGINATION
+   ============================================ */
+.controls {
+	background-color: white;
+	padding: var(--space-lg);
+	border-radius: var(--radius);
+	display: flex;
+	gap: var(--space-md);
+	align-items: center;
+	flex-wrap: wrap;
+	box-shadow: var(--shadow);
+	margin-bottom: var(--space-lg);
+}
+
+.page-size-container {
+	display: flex;
+	align-items: center;
+	gap: var(--space-sm);
+	margin-left: auto;
+}
+
+.page-size-container label {
+	margin: 0;
+	font-weight: 500;
+	white-space: nowrap;
+}
+
+.page-size-container select {
+	padding: var(--space-sm) var(--space-md);
+	border: 1px solid var(--color-border);
+	border-radius: var(--radius);
+	font-size: 0.95rem;
+}
+
+#page-num {
+	min-width: 80px;
+	text-align: center;
+}
+
+/* ============================================
+   13. TABLES
+   ============================================ */
+.table {
+	width: 100%;
+	border-collapse: collapse;
+	background-color: white;
+	box-shadow: var(--shadow);
+	border-radius: var(--radius);
+	overflow: hidden;
+}
+
+.table thead {
+	background-color: var(--color-dark);
+	color: white;
+}
+
+.table th,
+.table td {
+	padding: var(--space-md) var(--space-lg);
+	text-align: left;
+	border-bottom: 1px solid var(--color-border);
+}
+
+.table tbody tr:hover {
+	background-color: var(--color-light);
+}
+
+.table tbody tr:last-child td {
+	border-bottom: none;
+}
+
+.table th {
+	font-weight: 600;
+	color: var(--color-dark);
+	background-color: #f5f5f5;
+	border-bottom: 2px solid var(--color-border);
+}
+
+/* ============================================
+   14. UTILITY CLASSES
+   ============================================ */
+.meta {
+	font-size: 0.95rem;
+	color: #666;
+	font-style: italic;
+}
+
+/* ============================================
+   15. RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+	:root {
+		--space-lg: 1rem;
+		--space-xl: 1.5rem;
+	}
+
+	.container {
+		padding: var(--space-md);
+	}
+
+	header {
+		padding: var(--space-md);
+		margin-bottom: var(--space-lg);
+	}
+
+	h1 {
+		font-size: 1.75rem;
+	}
+
+	h2 {
+		font-size: 1.5rem;
+	}
+
+	h3 {
+		font-size: 1.25rem;
+	}
+
+	nav ul {
+		flex-direction: column;
+		gap: var(--space-sm);
+	}
+
+	nav a {
+		display: block;
+		text-align: center;
+	}
+
+	.controls {
+		flex-direction: column;
+		align-items: stretch;
+	}
+
+	.page-size-container {
+		margin-left: 0;
+		width: 100%;
+	}
+
+	.form-actions {
+		flex-direction: column;
+	}
+
+	.form-actions .btn {
+		width: 100%;
+	}
+
+	.row-actions {
+		flex-direction: column;
+	}
+
+	.row-actions .btn {
+		width: 100%;
+	}
+}
+
+@media (max-width: 480px) {
+	h1 {
+		font-size: 1.5rem;
+	}
+
+	.table {
+		font-size: 0.9rem;
+	}
+
+	.table th,
+	.table td {
+		padding: var(--space-sm);
+	}
+
+	.btn {
+		padding: var(--space-sm);
+		font-size: 0.9rem;
+	}
+}
